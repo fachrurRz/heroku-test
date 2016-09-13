@@ -1,11 +1,10 @@
 <?php
 
-Route::get('/', function () {
-    $users = cache()->remember('users', 10, function() {
-        return ['alex', 'billy'];
-    });
+use App\Jobs\LogSomething;
+use Illuminate\Support\Facades\App;
 
-    dd($users);
+Route::get('/', function () {
+    dispatch(new LogSomething());
 });
 
 Auth::routes();
