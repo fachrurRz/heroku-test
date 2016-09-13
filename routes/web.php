@@ -1,7 +1,11 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    $users = cache()->remember('users', 10, function() {
+        return ['alex', 'billy'];
+    });
+
+    dd($users);
 });
 
 Auth::routes();
