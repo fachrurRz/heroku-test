@@ -1,5 +1,9 @@
 <?php
 
 Route::get('/', function () {
-    return 'It works';
+    return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
